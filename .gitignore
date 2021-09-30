@@ -1,0 +1,6 @@
+./static
+./media
+./Tasker/__pycache__
+./taskmanager/migrations
+./taskmanager/__pycache__
+./db.sqlite3

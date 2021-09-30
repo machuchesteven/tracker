@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+    <title>Tracking base</title>
+    <link rel="stylesheet" href={% static 'css/bootstrap.css' %} />
+    <link rel="stylesheet" href={% static 'css/style.css' %} />
+    
+</head>
+    <body>
+    <div class="card">
+        <img class="card-img-top" src="holder.js/100x180/" alt="">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+            {{obj}}
+            <form action="/dashboard" method="POST">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit" class="btn btn-primary">Submit Project</button>
+            </form>
+            {% for sel  in serialed %}
+                {{sel.name}} with status {{sel.status}} <hr />
+            
+            <a href="{% url 'project-detail' pk=sel.pk %}">{{sel.name}}</a>
+            {% endfor %}
+            <a href="{% url 'project-detail' pk=3 %}">Go Kolo</a>
+        </div>
+    </div>
+    {% block main %}
+    {% endblock main %}
+    </body>
+</html>

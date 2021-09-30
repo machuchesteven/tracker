@@ -1,0 +1,22 @@
+{% extends 'base.html' %}{% load static %}
+{% block main %}
+<div class="container">
+{% for task in tasks %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{task.title}}</h4>
+            <p class="card-text">{{ task.project.description }}</p>
+                <div class="card-footer text-muted">
+                    <p class="align-left">{{ task.project.name}} | Status: <button class="btn btn-primary"><span class="badge">{{task.project.status}}</button> | <span>
+                    <form method="POST" action="{% url 'complete'  %}">
+                    {% csrf_token %}
+                    <input type="hidden" value={{task.id}}name="id" for="id">
+                    <input type="submit" value="Mark Completed" class="btn btn-success" />
+                    </form>
+                    </span></p> 
+                </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock main%}

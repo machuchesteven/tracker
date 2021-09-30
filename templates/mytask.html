@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% load static %}
+{% block main %}
+    {% for task in proj_tasks %}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{task.title}}</h4>
+                <p class="card-text">The Tool Used is | {{task.tool_used}} | <button type="button" class="btn btn-outline-success float-right">Mark Completed</button></p>
+            </div>
+        </div>
+    {% endfor %}
+    <p>Here we Handle the messages</p>
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            <strong>{{message}}</strong>
+        </div>
+    
+    {% endfor %}
+{% endblock main%}
