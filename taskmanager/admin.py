@@ -4,3 +4,9 @@ from.models import *
 
 
 admin.site.register(Project)
+admin.site.register(Task)
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}

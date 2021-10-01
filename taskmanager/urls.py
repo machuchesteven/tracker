@@ -9,7 +9,7 @@ router.register('task', TaskAPIView, basename="task")
 router.register('user', UserAPIView, basename="user")
 router.register('group', GroupAPIView, basename="group")
 router.register('permission', PermissionAPIView, basename="permission")
-
+router.register('article', ArticleAPIView, basename="article")
 
 urlpatterns = [
     path('', Home.as_view(), name="Homepage"),
@@ -21,5 +21,6 @@ urlpatterns = [
     path('actproject/<int:projid>',
          OngoingProjectView.as_view(), name="ongoing_project"),
     path('actproject', OngoingProjectView.as_view(), name="ongoing_project"),
+    path('art/<slug:slug>', ArticleView.as_view(), name="art"),
 
 ]

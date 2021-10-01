@@ -125,3 +125,17 @@ class OngoingProjectView(View):
         proj_tasks = Task.objects.filter(project=project)
         print(proj_tasks)
         return render(request, "mytask.html", context={'proj_tasks': proj_tasks})
+
+
+class ArticleAPIView(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+# class ArticleView(View):
+#     def get(self, request, s)
+
+
+class ArticleView(View):
+    def get(self, request, slug):
+        obj = Article.objects.get(slug=slug)
+        return HttpResponse(obj)

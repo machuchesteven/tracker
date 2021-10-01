@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Task
+from .models import Project, Task, Article
 from django.contrib.auth.models import User, Group, Permission
 
 
@@ -32,3 +32,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
+
+
+class ArticleSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Article
+        fields = ["title"]

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 # Create your models here.
 
 
@@ -41,3 +42,15 @@ class Task(models.Model):
             return self.project.description
         else:
             return f"The project is using {self.tool_used} in completeing a {self.category} task for a certain project we will find later"
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=64)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
